@@ -1,0 +1,105 @@
+[gd_scene load_steps=40 format=2]
+
+[ext_resource path="res://assets/animation/player/double_jump/alucard_double_jump_2.tres" type="Texture" id=1]
+[ext_resource path="res://assets/animation/player/walk/alucard_walk_14.tres" type="Texture" id=2]
+[ext_resource path="res://assets/animation/player/walk/alucard_walk_7.tres" type="Texture" id=3]
+[ext_resource path="res://assets/animation/player/walk/alucard_walk_6.tres" type="Texture" id=4]
+[ext_resource path="res://assets/animation/player/walk/alucard_walk_8.tres" type="Texture" id=5]
+[ext_resource path="res://assets/animation/player/jump/alucard_walk_0.tres" type="Texture" id=6]
+[ext_resource path="res://assets/animation/player/walk/alucard_walk_1.tres" type="Texture" id=7]
+[ext_resource path="res://assets/animation/player/walk/alucard_walk_9.tres" type="Texture" id=8]
+[ext_resource path="res://assets/animation/player/walk/alucard_walk_4.tres" type="Texture" id=9]
+[ext_resource path="res://assets/animation/player/walk/alucard_walk_2.tres" type="Texture" id=10]
+[ext_resource path="res://assets/animation/player/walk/alucard_walk_5.tres" type="Texture" id=11]
+[ext_resource path="res://assets/animation/player/walk/alucard_walk_3.tres" type="Texture" id=12]
+[ext_resource path="res://assets/animation/player/walk/alucard_walk_13.tres" type="Texture" id=13]
+[ext_resource path="res://assets/animation/player/walk/alucard_walk_12.tres" type="Texture" id=14]
+[ext_resource path="res://assets/animation/player/walk/alucard_walk_10.tres" type="Texture" id=15]
+[ext_resource path="res://assets/animation/player/walk/alucard_walk_11.tres" type="Texture" id=16]
+[ext_resource path="res://PlayerController.gd" type="Script" id=17]
+[ext_resource path="res://assets/animation/player/jump/alucard_walk_2.tres" type="Texture" id=18]
+[ext_resource path="res://assets/animation/player/jump/alucard_walk_1.tres" type="Texture" id=19]
+[ext_resource path="res://assets/animation/player/jump/alucard_walk_6.tres" type="Texture" id=20]
+[ext_resource path="res://assets/animation/player/jump/alucard_walk_3.tres" type="Texture" id=21]
+[ext_resource path="res://assets/animation/player/jump/alucard_walk_4.tres" type="Texture" id=22]
+[ext_resource path="res://assets/animation/player/idle/alucard_idle_1.tres" type="Texture" id=23]
+[ext_resource path="res://assets/animation/player/idle/alucard_idle_0.tres" type="Texture" id=24]
+[ext_resource path="res://assets/animation/player/idle/alucard_idle_5.tres" type="Texture" id=25]
+[ext_resource path="res://assets/animation/player/idle/alucard_idle_2.tres" type="Texture" id=26]
+[ext_resource path="res://assets/animation/player/idle/alucard_idle_4.tres" type="Texture" id=27]
+[ext_resource path="res://assets/animation/player/idle/alucard_idle_3.tres" type="Texture" id=28]
+[ext_resource path="res://assets/animation/player/double_jump/alucard_double_jump_4.tres" type="Texture" id=29]
+[ext_resource path="res://assets/animation/player/double_jump/alucard_double_jump_3.tres" type="Texture" id=30]
+[ext_resource path="res://assets/animation/player/double_jump/alucard_double_jump_1.tres" type="Texture" id=31]
+[ext_resource path="res://assets/animation/player/double_jump/alucard_double_jump_0.tres" type="Texture" id=32]
+[ext_resource path="res://assets/animation/player/attack/alucard_attack_0.tres" type="Texture" id=33]
+[ext_resource path="res://assets/animation/player/attack/alucard_attack_2.tres" type="Texture" id=34]
+[ext_resource path="res://assets/animation/player/attack/alucard_attack_3.tres" type="Texture" id=35]
+[ext_resource path="res://assets/animation/player/attack/alucard_attack_1.tres" type="Texture" id=36]
+
+[sub_resource type="CapsuleShape2D" id=1]
+radius = 14.2215
+height = 17.768
+
+[sub_resource type="SpriteFrames" id=2]
+animations = [ {
+"frames": [ ExtResource( 24 ), ExtResource( 23 ), ExtResource( 26 ), ExtResource( 28 ), ExtResource( 25 ), ExtResource( 27 ) ],
+"loop": true,
+"name": "idle",
+"speed": 7.0
+}, {
+"frames": [ ExtResource( 32 ), ExtResource( 31 ), ExtResource( 31 ), ExtResource( 1 ), ExtResource( 29 ), ExtResource( 30 ) ],
+"loop": false,
+"name": "double_jump",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 6 ), ExtResource( 7 ), ExtResource( 10 ), ExtResource( 12 ), ExtResource( 9 ), ExtResource( 11 ), ExtResource( 4 ), ExtResource( 3 ), ExtResource( 5 ), ExtResource( 8 ), ExtResource( 15 ), ExtResource( 16 ), ExtResource( 14 ), ExtResource( 13 ), ExtResource( 2 ) ],
+"loop": true,
+"name": "walk",
+"speed": 10.0
+}, {
+"frames": [ ExtResource( 33 ), ExtResource( 36 ), ExtResource( 34 ), ExtResource( 35 ) ],
+"loop": false,
+"name": "attack",
+"speed": 15.0
+}, {
+"frames": [ ExtResource( 6 ), ExtResource( 19 ), ExtResource( 18 ), ExtResource( 21 ), ExtResource( 22 ), ExtResource( 20 ) ],
+"loop": false,
+"name": "jump",
+"speed": 15.0
+} ]
+
+[sub_resource type="RectangleShape2D" id=3]
+extents = Vector2( 32.5688, 65.8344 )
+
+[node name="player" type="KinematicBody2D"]
+script = ExtResource( 17 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( 0, 1 )
+scale = Vector2( 3, 3 )
+shape = SubResource( 1 )
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+scale = Vector2( 3, 3 )
+frames = SubResource( 2 )
+animation = "attack"
+frame = 3
+playing = true
+
+[node name="Camera2D" type="Camera2D" parent="."]
+current = true
+limit_left = 0
+limit_top = 0
+limit_right = 10000
+limit_bottom = 740
+limit_smoothed = true
+smoothing_enabled = true
+
+[node name="Arm" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Arm"]
+position = Vector2( 16.2757, 3.92862 )
+shape = SubResource( 3 )
+[connection signal="animation_finished" from="AnimatedSprite" to="." method="_on_AnimatedSprite_animation_finished"]
+[connection signal="body_entered" from="Arm" to="." method="_on_Arm_body_entered"]
